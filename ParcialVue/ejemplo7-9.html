@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+
+    <title>07-Noviembre-2018</title>
+</head>
+
+<body>
+    <div id="AppVue">
+        <div class="container">
+            <div class="row">
+                <div id="clientes" class="col-sm-12 col-md-4">
+                    <h1>Obtener los clientes: {{cantidad}}</h1>
+                    <input type="range" max="20" min="3" v-model="cantidad">
+                    <button class="btn btn-primary" v-on:click=obtenerClientes>GET</button>
+                </div>
+
+                <div id="filtros" class="col-sm-12 col-md-4">
+                    <h2>Campos: </h2>
+                </div>
+
+                <div id="busqueda" class="col-sm-12 col-md-4">
+                    <input type="text" v-model="fnFiltro" >
+                    <button v-on:click="">Buscar</button>
+                    <h2>Buscar</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div v-for="(cliente,conta) in clientes" class="col-xs-12 col-sm-12 col-md-3" id="unCliente">
+                    <img id="foto" v-bind:src="cliente.picture.large">
+
+                            <h4> Nombre: {{cliente.name.first}}, {{cliente.name.last}} </h4>
+                            <h5>Sexo: {{cliente.gender}} </h5>
+                            <h5> Locacion: {{cliente.location.city}}</h5>
+                            <h5>Telefono: {{cliente.phone}}</h5>
+                            <h5>Celular: {{cliente.cell}}</h5>
+
+                        <button v-on:click="aceptarCliente(conta)" class="btn btn-primary">Aceptado</button>
+                        <button v-on:click="rechazarCliente(conta)" class="btn ">Rechazado</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script src="js/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+        <script src="js/main.js"></script>
+
+
+</body>
+
+</html>
